@@ -1,17 +1,7 @@
 [
     {
-        "username": "test",
-        "password": "123123",
-        "ipadress": "::1"
-    },
-    {
-        "username": "paiman1991@gmail.com",
-        "password": "123123",
-        "ipadress": "getIPFromAmazon()"
-    },
-    {
-        "username": "ad",
-        "password": "123123",
-        "ipadress": "getIPFromAmazon();"
+        "userID": "",
+        "username": "peydev",
+        "password": "123123"
     }
 ]
