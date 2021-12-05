@@ -91,6 +91,7 @@ app.post('/register', async (req, res) => {
 });
 
 
+
 // Logs out a user./////////////////////////////////////////////
 app.get('/logout', function (req, res) {
     console.log(`${req.session.username} has been logged out.`)
@@ -101,12 +102,18 @@ app.get('/logout', function (req, res) {
 });
 
 
+app.get('/getusername', (req, res) => {
+    res.send(req.session.username)
+});
+
+
 // När en användare ansluter eller disconnectar.///////////////
 io.on('connection', (socket) => {
     if (sessionLoggedin == true) {
         let userAccount = users.find((data) => data.username == sessionUsername);
         userAccount.userID = socket.id;
-        console.log(`User ${userAccount.username} with userID: ${socket.id} and with Socket.id: ${userAccount.userID} connected`);
+        socket.user = userAccount.username;
+        console.log(`User ${socket.user} with userID: ${userAccount.userID} (copied from new socket.id) connected`);
     }
     socket.on('disconnect', () => {
         console.log('user disconnected');
