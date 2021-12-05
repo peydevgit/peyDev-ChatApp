@@ -124,6 +124,7 @@ io.on('connection', (socket) => {
 ////Medelanden//////////////////////////////////////////////////
 io.on('connection', (socket) => {
     socket.on('chat message', (msg) => {
+        msg = `${socket.user}: ${msg}`
         console.log('message: ' + msg);
     });
 });
@@ -132,8 +133,18 @@ io.on('connection', (socket) => {
 /////medelande till alla////////////////////////////////////////
 io.on('connection', (socket) => {
     socket.on('chat message', (msg) => {
+        msg = `${socket.user}: ${msg}`
         io.emit('chat message', msg);
         console.log("trying to print on html")
+    });
+});
+
+///User typing....////////////////////////////////////////////
+io.on('connection', (socket) => {
+    socket.on('user typing', (typing) => {
+        typing = `${socket.user} typing....`
+        io.emit('user typing', typing);
+        console.log(`${socket.user} typing....`)
     });
 });
 

@@ -3,13 +3,13 @@ window.onload = function () {
     var socket = io();
     
     ///////////
-    forfragan = new XMLHttpRequest();
-    let socketuser = 'username';
-    forfragan.open("GET", "/getusername");
-    forfragan.onload = function () {
-       return socketuser = this.response;
-    };
-    forfragan.send();
+    // forfragan = new XMLHttpRequest();
+    // let socketuser = 'username';
+    // forfragan.open("GET", "/getusername");
+    // forfragan.onload = function () {
+    //    return socketuser = this.response;
+    // };
+    // forfragan.send();
     ///////////////////////////
     
     var messages = document.getElementById('messages');
@@ -23,12 +23,18 @@ window.onload = function () {
         userTyping.value = null;
     }
 
-    input.addEventListener('keypress', async (e) => {
-        userTyping.value = `${socketuser} is typing...`
-        setTimeout(waitFor, 3000);  // after 3 sec, the usterTyping.value goes back to null.
+    input.addEventListener('keydown', async (e) => {
+        socket.emit('user typing', userTyping.value);
+        
+        
     });
-    /////////////////////////////
 
+    socket.on('user typing', function (typing) {
+        userTyping.value = typing;
+        setTimeout(waitFor, 3000);
+    });
+
+    /////////////////////////////
     form.addEventListener('submit', function (e) {
         e.preventDefault();
         if (input.value) {
