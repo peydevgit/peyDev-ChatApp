@@ -23,16 +23,15 @@ window.onload = function () {
         userTyping.value = null;
     }
 
-    input.addEventListener('keydown', async (e) => {
+    input.addEventListener('keydown', async ()=> {
         socket.emit('user typing', userTyping.value);
-        
-        
     });
 
     socket.on('user typing', function (typing) {
         userTyping.value = typing;
         setTimeout(waitFor, 3000);
     });
+    ////////////////////////////////////////////////////////////////////
 
     /////////////////////////////
     form.addEventListener('submit', function (e) {
