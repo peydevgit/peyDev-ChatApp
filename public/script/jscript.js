@@ -1,17 +1,7 @@
 window.onload = function () {
 
     var socket = io();
-    
-    ///////////
-    // forfragan = new XMLHttpRequest();
-    // let socketuser = 'username';
-    // forfragan.open("GET", "/getusername");
-    // forfragan.onload = function () {
-    //    return socketuser = this.response;
-    // };
-    // forfragan.send();
-    ///////////////////////////
-    
+       
     var messages = document.getElementById('messages');
     var form = document.getElementById('form');
     var input = document.getElementById('input');
@@ -32,6 +22,20 @@ window.onload = function () {
         setTimeout(waitFor, 3000);
     });
     ////////////////////////////////////////////////////////////////////
+
+    // ideer för imorgon. hämta ut användarnamn genom en funktion till servern som user type.
+
+ 
+
+    //
+    socket.on("connecting", (text) => {
+        var item = document.createElement('li');
+        item.textContent = text;
+        messages.appendChild(item);
+        window.scrollTo(0, document.body.scrollHeight);
+    });
+
+
 
     /////////////////////////////
     form.addEventListener('submit', function (e) {

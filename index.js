@@ -114,18 +114,17 @@ io.on('connection', (socket) => {
         userAccount.userID = socket.id;
         socket.user = userAccount.username;
         console.log(`User ${socket.user} with userID: ${userAccount.userID} (copied from new socket.id) connected`);
+        text = `${socket.user} has connected.`
+        io.emit('connecting', text);
+ 
+        
+        
+
+   
     }
+
     socket.on('disconnect', () => {
         console.log('user disconnected');
-    });
-});
-
-
-////Medelanden//////////////////////////////////////////////////
-io.on('connection', (socket) => {
-    socket.on('chat message', (msg) => {
-        msg = `${socket.user}: ${msg}`
-        console.log('message: ' + msg);
     });
 });
 
