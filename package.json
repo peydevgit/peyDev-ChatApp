@@ -1,22 +1,22 @@
 {
-  "name": "peydevchat",
-  "version": "1.0.0",
-  "description": "nodejs express socketio",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "nodejs",
-    "js",
-    "express",
-    "socketio"
-  ],
-  "author": "peyman eliassi",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.17.1",
-    "socket.io": "^4.4.0",
-    "socketio": "^1.0.0"
-  }
+    "name": "peydevchat",
+    "version": "1.0.0",
+    "description": "nodejs express socketio",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "nodejs",
+        "js",
+        "express",
+        "socketio"
+    ],
+    "author": "peyman eliassi",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.17.1",
+        "socket.io": "^4.4.0",
+        "socketio": "^1.0.0"
+    }
 }

@@ -20,6 +20,9 @@ app.get('/', function(req, res) {
 });
 
 
+
+
+
 let users_online = []
 let removedUser;
 // När en användare ansluter eller disconnectar.///////////////

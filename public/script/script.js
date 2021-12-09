@@ -11,13 +11,23 @@ window.onload = function() {
 
 
     let userOnlineList = (username) => {
-        let online_user_list = document.createElement('li');
-        online_user_list.id = username;
-        online_user_list.textContent = username;
-        userOnline.appendChild(online_user_list);
-        window.scrollTo(0, document.body.scrollHeight);
+            let online_user_list = document.createElement('li');
+            online_user_list.id = username;
+            online_user_list.textContent = username;
+            userOnline.appendChild(online_user_list);
+            window.scrollTo(0, document.body.scrollHeight);
+        }
+        // vi skapar en validator funktion för onskefulla input för att slippa kopiera och klistra det överallt som behövs.
+    let valiDator = (input) => {
+        let output = '';
+        for (let i = 0; i < input.length; i++) {
+            if (input[i] == '<')
+                output += '&lt;';
+            else
+                output += input[i];
+        }
+        return output;
     }
-
 
     socket.on('get online users', (onlineUsers) => {
         userOnline.innerHTML = '';
@@ -85,6 +95,7 @@ window.onload = function() {
 
 
     chat_send.addEventListener('click', function(e) {
+        input.value = valiDator(input.value)
         e.preventDefault();
         let savedMessage = input.value;
         if (input.value.length > 0) {
@@ -92,15 +103,16 @@ window.onload = function() {
             input.value = '';
             userTyping.value = '';
             let youMessage = document.createElement('li') // rensa inmatningsfältet
-            let html = `You: ${savedMessage}`;
+            let savedText = `You: ${savedMessage}`;
             youMessage.id = "youWrote";
-            youMessage.innerHTML = html;
+            youMessage.innerHTML = savedText;
             messages.appendChild(youMessage);
             window.scrollTo(0, document.body.scrollHeight);
 
 
         }
     });
+
 
     socket.on('chat message', function(msg) {
         let online_user_message = document.createElement('li');
@@ -127,5 +139,6 @@ window.onload = function() {
         userTyping.value = `${socket}  is typing....`;
 
     });
+
 
 };
