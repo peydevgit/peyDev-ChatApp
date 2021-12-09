@@ -1,11 +1,22 @@
 {
-    "name": "peydev-chatapp",
-    "version": "0.0.1",
-    "description": "my first socket.io app",
-    "dependencies": {
-        "express": "^4.17.1",
-        "express-session": "^1.17.2",
-        "path": "^0.12.7",
-        "socket.io": "^4.4.0"
-    }
+  "name": "peydevchat",
+  "version": "1.0.0",
+  "description": "nodejs express socketio",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs",
+    "js",
+    "express",
+    "socketio"
+  ],
+  "author": "peyman eliassi",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^4.4.0",
+    "socketio": "^1.0.0"
+  }
 }
